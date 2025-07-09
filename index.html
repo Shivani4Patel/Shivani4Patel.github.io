@@ -3,73 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shivani Patel | Cloud Engineer</title>
+  <title>Shivani Patel | Cloud Engineer Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
   <canvas id="bgCanvas"></canvas>
-  <audio id="bgAudio" loop src="https://cdn.pixabay.com/download/audio/2022/10/03/audio_c79833d4b5.mp3?filename=relaxing-vibes-ambient-118996.mp3"></audio>
-  
   <header>
     <h1 data-aos="fade-down">Shivani Patel</h1>
-    <h2 data-aos="fade-up">Cloud Engineer | AWS & GCP Specialist</h2>
-    <button id="toggleMode" title="Toggle theme">🌙</button>
-    <button id="audioToggle" title="Toggle music">🎵</button>
+    <h3 data-aos="fade-up">Cloud Engineer | AWS & GCP Specialist</h3>
+    <button id="toggleMode">🌓</button>
+    <button id="audioToggle">🎵</button>
   </header>
-
   <main>
-    <section id="about" data-aos="fade-up">
-      <h3>About Me</h3>
-      <p>Hi, I’m Shivani Patel, a passionate cloud engineer specialized in scalable, secure AWS & Google Cloud solutions. I design, build, and optimize modern infrastructure & DevOps pipelines.</p>
+    <section id="about" data-aos="fade-right">
+      <h2>About Me</h2>
+      <p>
+        Hi, I’m Shivani Patel, a passionate cloud engineer specialized in scalable,
+        secure AWS & Google Cloud solutions. I design, build, and optimize modern
+        infrastructure & DevOps pipelines.
+      </p>
     </section>
 
-    <section id="experience" data-aos="fade-up">
-      <h3>Experience</h3>
-      <div>
-        <h4>GWG Cloud Engineer Track Lead - Google Cloud Skills Boost</h4>
-        <p>Jun 2025 - Present</p>
+    <section id="experience" data-aos="fade-left">
+      <h2>Experience</h2>
+      <div class="job">
+        <h3>GWG Cloud Engineer Track Lead – Google Cloud Skills Boost</h3>
+        <p><strong>Jun 2025 – Present</strong></p>
         <ul>
-          <li>Facilitate weekly cybersecurity cohort meetings & labs</li>
-          <li>Completed 40+ incident response scenarios</li>
-          <li>Log analysis, threat detection with SIEM tools</li>
-        </ul>
-
-        <h4>Tech Support Advisor - TD</h4>
-        <p>Apr 2025 - Present</p>
-        <ul>
-          <li>Advanced troubleshooting for lending systems</li>
-          <li>Worked closely with internal IT & dev teams</li>
-        </ul>
-
-        <h4>Senior Tech Support - Dell Technologies</h4>
-        <p>May 2024 - Apr 2025</p>
-        <ul>
-          <li>Resolved enterprise cloud/hardware issues</li>
-          <li>Reduced resolution time by 30%</li>
+          <li>Led weekly cybersecurity cohort meetings & interactive labs</li>
+          <li>Completed 40+ hands-on real-world incident response labs</li>
+          <li>Collaborated on threat detection and log analysis using SIEM tools</li>
         </ul>
       </div>
+      <div class="job">
+        <h3>Tech Support Advisor – TD</h3>
+        <p><strong>Apr 2025 – Present</strong></p>
+        <ul>
+          <li>Troubleshot complex issues related to lending platforms</li>
+          <li>Collaborated with IT and escalation teams to ensure compliance</li>
+          <li>Enhanced system documentation and user experience</li>
+        </ul>
+      </div>
+      <!-- Add more jobs similarly -->
     </section>
 
     <section id="projects" data-aos="fade-up">
-      <h3>GitHub Projects</h3>
+      <h2>GitHub Projects</h2>
       <div id="repos">Loading projects...</div>
     </section>
 
-    <section id="contact" data-aos="fade-up">
-      <h3>Contact Me</h3>
+    <section id="contact" data-aos="zoom-in">
+      <h2>Contact Me</h2>
       <p>Email: <a href="mailto:pshe47@gmail.com">pshe47@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/shivani-patel-p5371" target="_blank">shivani-patel-p5371</a></p>
-      <p>Dev.to: <a href="https://dev.to/she0407" target="_blank">she0407</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/shivani-patel-p5371">shivani-patel-p5371</a></p>
+      <p>Dev.to: <a href="https://dev.to/she0407">she0407</a></p>
     </section>
   </main>
-
-  <footer>
-    <p>© 2025 Shivani Patel | Built with ❤️ using HTML, CSS, JavaScript & Three.js</p>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <audio id="bgAudio" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_e17983c493.mp3" type="audio/mpeg" />
+  </audio>
+  <footer data-aos="fade-up">© 2025 Shivani Patel</footer>
   <script src="script.js"></script>
 </body>
 </html>
