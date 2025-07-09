@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shivani Patel | Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
-    <nav>
+    <nav class="container">
       <div class="logo">Shivani Patel</div>
-      <ul>
+      <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -19,48 +19,48 @@
     </nav>
   </header>
 
-  <section id="hero">
-    <div class="hero-content">
-      <h1>Hello, I am <span class="highlight">Shivani Patel</span></h1>
-      <p>Your Cloud & Tech Support Specialist</p>
-      <a href="#contact" class="btn-primary">Get in Touch</a>
-    </div>
-  </section>
+  <main>
+    <section id="hero" class="container">
+      <h1>Hello, I’m <span class="highlight">Shivani Patel</span></h1>
+      <p class="subtitle">Cloud Engineer & Tech Support Specialist</p>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </section>
 
-  <section id="about" class="section-container">
-    <h2>About Me</h2>
-    <p>
-      Passionate about cloud engineering, cybersecurity, and technical support.  
-      Experienced in AWS, Google Cloud, and customer-facing tech solutions.  
-      Ready to solve complex challenges and deliver seamless tech experiences.
-    </p>
-  </section>
+    <section id="about" class="container section">
+      <h2>About Me</h2>
+      <p>
+        Experienced cloud engineer passionate about building scalable solutions and providing exceptional technical support. Skilled in AWS, Google Cloud, cybersecurity, and customer-focused problem solving.
+      </p>
+    </section>
 
-  <section id="experience" class="section-container">
-    <h2>Experience Highlights</h2>
-    <ul>
-      <li>Google Cloud Skills Boost - Cloud Engineer Track Lead (2025-Present)</li>
-      <li>Tech Support Advisor, TD Bank - Advanced troubleshooting and customer support</li>
-      <li>Senior Technical Support at Dell Technologies - Enterprise-level cloud & hardware support</li>
-      <!-- You can add more as you want -->
-    </ul>
-  </section>
+    <section id="experience" class="container section">
+      <h2>Experience</h2>
+      <ul>
+        <li><strong>Google Cloud Skills Boost</strong> — Cloud Engineer Track Lead (2025–Present)</li>
+        <li><strong>TD Bank</strong> — Tech Support Advisor (2025–Present)</li>
+        <li><strong>Dell Technologies</strong> — Senior Technical Support Representative (2024–2025)</li>
+      </ul>
+    </section>
 
-  <section id="contact" class="section-container">
-    <h2>Contact Me</h2>
-    <p>Email me at: <a href="mailto:pshe47@gmail.com">pshe47@gmail.com</a></p>
-    <p>Or connect on <a href="https://www.linkedin.com/in/shivani-patel" target="_blank" rel="noopener">LinkedIn</a></p>
-    <form onsubmit="return sendEmail()" class="contact-form">
-      <input type="text" id="name" placeholder="Your Name" required />
-      <input type="email" id="email" placeholder="Your Email" required />
-      <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit" class="btn-primary">Send</button>
-    </form>
-    <p id="status"></p>
-  </section>
+    <section id="contact" class="container section">
+      <h2>Contact Me</h2>
+      <p>Email me: <a href="mailto:pshe47@gmail.com">pshe47@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/shivani-patel" target="_blank" rel="noopener noreferrer">linkedin.com/in/shivani-patel</a></p>
+
+      <form id="contact-form" onsubmit="return sendEmail()">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send</button>
+        <p id="status"></p>
+      </form>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 Shivani Patel | <a href="https://github.com/yourgithubusername" target="_blank" rel="noopener">GitHub</a></p>
+    <div class="container">
+      <p>© 2025 Shivani Patel | <a href="https://github.com/yourgithubusername" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+    </div>
   </footer>
 
   <script>
@@ -69,15 +69,15 @@
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
       const status = document.getElementById('status');
+
       if (!name || !email || !message) {
-        status.textContent = 'Please fill out all fields.';
+        status.textContent = 'Please fill in all fields.';
         status.style.color = 'red';
         return false;
       }
-      // Simple mailto fallback:
-      const mailtoLink = `mailto:pshe47@gmail.com?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message + "\n\nFrom: " + name + ", " + email)}`;
-      window.location.href = mailtoLink;
-      status.textContent = "Opening your email client...";
+      const mailto = `mailto:pshe47@gmail.com?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message + '\n\nFrom: ' + name + ', ' + email)}`;
+      window.location.href = mailto;
+      status.textContent = 'Opening email client...';
       status.style.color = 'green';
       return false;
     }
