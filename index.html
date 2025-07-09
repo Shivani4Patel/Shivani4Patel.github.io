@@ -2,100 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shivani Patel | Cloud Engineer Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivani Patel | Cloud Engineer</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Three.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
-  <!-- FontAwesome for tech icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 </head>
 <body>
-  <!-- 3D Background Canvas -->
-  <canvas id="bg"></canvas>
+  <canvas id="bgCanvas"></canvas>
+  <audio id="bgAudio" loop src="https://cdn.pixabay.com/download/audio/2022/10/03/audio_c79833d4b5.mp3?filename=relaxing-vibes-ambient-118996.mp3"></audio>
+  
+  <header>
+    <h1 data-aos="fade-down">Shivani Patel</h1>
+    <h2 data-aos="fade-up">Cloud Engineer | AWS & GCP Specialist</h2>
+    <button id="toggleMode" title="Toggle theme">🌙</button>
+    <button id="audioToggle" title="Toggle music">🎵</button>
+  </header>
 
-  <!-- Overlay content -->
-  <div class="container">
-    <header>
-      <h1 class="glitch" data-text="Shivani Patel">Shivani Patel</h1>
-      <p class="subtitle">Cloud Engineer | AWS & GCP Specialist</p>
-      <button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
-    </header>
-
-    <section id="about" class="section fade-up">
-      <h2>About Me</h2>
-      <p>
-        Hi, I’m <strong>Shivani Patel</strong>, a passionate cloud engineer
-        specialized in scalable, secure AWS & Google Cloud solutions.
-        I design, build, and optimize modern infrastructure & DevOps pipelines.
-      </p>
+  <main>
+    <section id="about" data-aos="fade-up">
+      <h3>About Me</h3>
+      <p>Hi, I’m Shivani Patel, a passionate cloud engineer specialized in scalable, secure AWS & Google Cloud solutions. I design, build, and optimize modern infrastructure & DevOps pipelines.</p>
     </section>
 
-    <section id="experience" class="section fade-up">
-      <h2>Experience</h2>
-
-      <div class="experience-item">
-        <h3>GWG Cloud Engineer Track Lead</h3>
-        <span>Google Cloud Skills Boost · Contract Part-time (Jun 2025 - Present)</span>
+    <section id="experience" data-aos="fade-up">
+      <h3>Experience</h3>
+      <div>
+        <h4>GWG Cloud Engineer Track Lead - Google Cloud Skills Boost</h4>
+        <p>Jun 2025 - Present</p>
         <ul>
-          <li>Led weekly cybersecurity cohort meetings & interactive labs.</li>
-          <li>Completed 40+ hands-on real-world incident response labs.</li>
-          <li>Collaborated on threat detection and log analysis using SIEM tools.</li>
+          <li>Facilitate weekly cybersecurity cohort meetings & labs</li>
+          <li>Completed 40+ incident response scenarios</li>
+          <li>Log analysis, threat detection with SIEM tools</li>
         </ul>
-      </div>
 
-      <div class="experience-item">
-        <h3>Tech Support Advisor</h3>
-        <span>TD · Full-time (Apr 2025 - Present)</span>
+        <h4>Tech Support Advisor - TD</h4>
+        <p>Apr 2025 - Present</p>
         <ul>
-          <li>Provided advanced troubleshooting for lending and banking platforms.</li>
-          <li>Collaborated with IT teams ensuring security and system compliance.</li>
-          <li>Documented and optimized user experience for internal apps.</li>
+          <li>Advanced troubleshooting for lending systems</li>
+          <li>Worked closely with internal IT & dev teams</li>
         </ul>
-      </div>
 
-      <div class="experience-item">
-        <h3>Senior Technical Support Representative</h3>
-        <span>Dell Technologies · Full-time (May 2024 - Apr 2025)</span>
+        <h4>Senior Tech Support - Dell Technologies</h4>
+        <p>May 2024 - Apr 2025</p>
         <ul>
-          <li>Resolved critical enterprise hardware & cloud product issues.</li>
-          <li>Managed escalations and technical documentation to prevent recurrence.</li>
-          <li>Reduced support resolution time by 30% via remote tools & chatbots.</li>
+          <li>Resolved enterprise cloud/hardware issues</li>
+          <li>Reduced resolution time by 30%</li>
         </ul>
       </div>
     </section>
 
-    <section id="projects" class="section fade-up">
-      <h2>GitHub Projects</h2>
-      <div id="repos" class="repos-grid">
-        <p>Loading projects...</p>
-      </div>
+    <section id="projects" data-aos="fade-up">
+      <h3>GitHub Projects</h3>
+      <div id="repos">Loading projects...</div>
     </section>
 
-    <section id="contact" class="section fade-up">
-      <h2>Contact Me</h2>
+    <section id="contact" data-aos="fade-up">
+      <h3>Contact Me</h3>
       <p>Email: <a href="mailto:pshe47@gmail.com">pshe47@gmail.com</a></p>
-      <p>
-        LinkedIn:
-        <a
-          href="https://www.linkedin.com/in/shivani-patel-p5371"
-          target="_blank"
-          rel="noopener"
-          >shivani-patel-p5371</a
-        >
-      </p>
-      <p>
-        Dev.to:
-        <a href="https://dev.to/she0407" target="_blank" rel="noopener"
-          >she0407</a
-        >
-      </p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/shivani-patel-p5371" target="_blank">shivani-patel-p5371</a></p>
+      <p>Dev.to: <a href="https://dev.to/she0407" target="_blank">she0407</a></p>
     </section>
-  </div>
+  </main>
 
+  <footer>
+    <p>© 2025 Shivani Patel | Built with ❤️ using HTML, CSS, JavaScript & Three.js</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
