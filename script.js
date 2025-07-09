@@ -1,4 +1,4 @@
-// Dark / Light Mode Toggle
+// =============== Dark Mode Toggle ===============
 const themeToggleBtn = document.getElementById('theme-toggle');
 const body = document.body;
 
@@ -21,111 +21,139 @@ themeToggleBtn.addEventListener('click', () => {
   }
 });
 
-// Load saved theme
+// Load saved theme from localStorage
 const savedTheme = localStorage.getItem('theme') || 'light';
 setTheme(savedTheme);
 
-// Fetch GitHub Repos Dynamically
+// =============== Scroll Fade-In Animation ===============
+const fadeElements = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  },
+  {
+    threshold: 0.3
+  }
+);
+
+fadeElements.forEach(el => observer.observe(el));
+
+// =============== Fetch GitHub Repos ===============
 const reposContainer = document.getElementById('repos');
-const username = 'Shivani4Patel';
+const githubUser = 'Shivani4Patel';
 
 async function fetchRepos() {
   reposContainer.innerHTML = '<p>Loading projects...</p>';
   try {
-    const res = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=12`);
-    if (!res.ok) throw new Error('GitHub API Error');
+    const res = await fetch(`https://api.github.com/users/${githubUser}/repos?sort=updated&per_page=10`);
+    if(!res.ok) throw new Error('Failed to fetch repos');
     const repos = await res.json();
 
-    if (repos.length === 0) {
+    if(repos.length === 0) {
       reposContainer.innerHTML = '<p>No public repositories found.</p>';
       return;
     }
 
     reposContainer.innerHTML = '';
     repos.forEach(repo => {
-      const repoEl = document.createElement('div');
-      repoEl.className = 'repo-card';
-      repoEl.innerHTML = `
+      const card = document.createElement('div');
+      card.className = 'repo-card';
+      card.innerHTML = `
         <h3>${repo.name}</h3>
-        <p>${repo.description ? repo.description : 'No description provided.'}</p>
-        <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">View Repo →</a>
+        <p>${repo.description || 'No description provided.'}</p>
+        <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">View Repo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
       `;
-      reposContainer.appendChild(repoEl);
+      reposContainer.appendChild(card);
     });
   } catch (err) {
-    reposContainer.innerHTML = `<p>Error loading projects: ${err.message}</p>`;
+    reposContainer.innerHTML = `<p class="error">Error loading repos: ${err.message}</p>`;
   }
 }
-
 fetchRepos();
 
-// Background Ambient Audio with Controls
-const audioToggleBtn = document.getElementById('audio-toggle');
-const audio = new Audio('https://cdn.pixabay.com/download/audio/2022/03/26/audio_3f3b58b4a8.mp3?filename=ambient-electronic-loop-11023.mp3');
-audio.loop = true;
-audio.volume = 0.12;
-let audioPlaying = false;
+// =============== THREE.js 3D Animated Clouds Background ===============
 
-audioToggleBtn.addEventListener('click', () => {
-  if (audioPlaying) {
-    audio.pause();
-    audioToggleBtn.textContent = '🔈';
-  } else {
-    audio.play();
-    audioToggleBtn.textContent = '🔊';
-  }
-  audioPlaying = !audioPlaying;
-});
+const canvas = document.getElementById('bg');
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x000000, 0); // transparent bg
 
-// Three.js 3D rotating cloud animation
-
-const container = document.getElementById('threejs-container');
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(35, container.clientWidth / container.clientHeight, 0.1, 1000);
-camera.position.z = 60;
 
-const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-renderer.setSize(container.clientWidth, container.clientHeight);
-container.appendChild(renderer.domElement);
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+camera.position.z = 30;
 
-// Simple cloud geometry with spheres
+// Ambient lights to highlight clouds
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+const pointLight = new THREE.PointLight(0xff6f61, 1);
+pointLight.position.set(10, 20, 10);
+scene.add(pointLight);
+
+// Generate many semi-transparent spheres to simulate volumetric clouds
+
 const cloudGroup = new THREE.Group();
 
-function createCloudPart(x, y, z, size) {
-  const geom = new THREE.SphereGeometry(size, 32, 32);
-  const mat = new THREE.MeshStandardMaterial({ color: 0xff6f61, roughness: 0.7, metalness: 0.1 });
-  const mesh = new THREE.Mesh(geom, mat);
-  mesh.position.set(x, y, z);
-  return mesh;
+function createCloud() {
+  const cloud = new THREE.Group();
+
+  const sphereMat = new THREE.MeshStandardMaterial({
+    color: 0xff6f61,
+    roughness: 0.8,
+    metalness: 0.1,
+    transparent: true,
+    opacity: 0.25,
+  });
+
+  for(let i = 0; i < 15; i++) {
+    const sphereGeo = new THREE.SphereGeometry(3 + Math.random() * 2, 32, 32);
+    const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+
+    sphere.position.set(
+      Math.random() * 8 - 4,
+      Math.random() * 3 - 1.5,
+      Math.random() * 5 - 2.5,
+    );
+
+    cloud.add(sphere);
+  }
+
+  cloud.position.set(
+    Math.random() * 60 - 30,
+    Math.random() * 20 - 10,
+    Math.random() * -10,
+  );
+
+  cloud.rotationSpeed = 0.001 + Math.random() * 0.002;
+  return cloud;
 }
 
-cloudGroup.add(createCloudPart(-10, 0, 0, 8));
-cloudGroup.add(createCloudPart(-3, 3, 1, 6));
-cloudGroup.add(createCloudPart(4, 0, -1, 7));
-cloudGroup.add(createCloudPart(10, 2, 2, 5));
+// Create 10 clouds
+for(let i=0; i < 10; i++) {
+  const c = createCloud();
+  cloudGroup.add(c);
+}
 
 scene.add(cloudGroup);
 
-// Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-scene.add(ambientLight);
-const pointLight = new THREE.PointLight(0xff6f61, 1);
-pointLight.position.set(20, 20, 20);
-scene.add(pointLight);
-
+// Animate clouds drifting slowly with rotation
 function animate() {
   requestAnimationFrame(animate);
-  cloudGroup.rotation.y += 0.005;
-  cloudGroup.rotation.x = Math.sin(Date.now() * 0.001) * 0.05;
+  cloudGroup.children.forEach(cloud => {
+    cloud.rotation.y += cloud.rotationSpeed;
+    cloud.position.x += 0.01;
+    if(cloud.position.x > 35) cloud.position.x = -35;
+  });
   renderer.render(scene, camera);
 }
+
 animate();
 
-// Resize handling
+// Resize handler
 window.addEventListener('resize', () => {
-  const w = container.clientWidth;
-  const h = container.clientHeight;
-  renderer.setSize(w, h);
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
-});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.inner
