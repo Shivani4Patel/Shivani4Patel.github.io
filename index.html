@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>She Patel - Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <h1>She Patel</h1>
+      <p>Cloud Engineer & Tech Support Specialist</p>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hello! I'm She Patel, a passionate cloud engineer and technical support specialist with experience in AWS, Google Cloud, cybersecurity, and enterprise-level IT solutions. I enjoy working on scalable cloud solutions, mentoring learners, and providing excellent tech support. I’m continuously learning and growing to keep up with the fast-paced tech world.</p>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <!-- Experience articles go here - keep same as before -->
+
+      <article>
+        <h3>GWG Cloud Engineer Track Lead</h3>
+        <p><strong>Google Cloud Skills Boost · Contract Part-time</strong> | Jun 2025 – Present (2 months)</p>
+        <ul>
+          <li>Facilitate weekly cohort meetings and office hours, supporting learners in understanding cybersecurity material.</li>
+          <li>Organize interactive activities to enhance engagement and reinforce technical concepts.</li>
+          <li>Completed 40+ hands-on labs simulating real-world incident response scenarios.</li>
+          <li>Collaborated with 30+ peers in threat analysis and tool walkthroughs.</li>
+          <li>Practiced log analysis using industry-standard SIEM tools across 100+ simulated events.</li>
+          <li>Gained proficiency in network security, digital forensics, and risk mitigation strategies.</li>
+          <li>Trained in threat detection, SIEM configuration, and incident response frameworks.</li>
+        </ul>
+      </article>
+
+      <!-- ... add all other experience articles exactly as before ... -->
+
+      <article>
+        <h3>Software Developer (Freelance)</h3>
+        <p><strong>Shiv Infrastructure</strong> | Jan 2020 – Jun 2020 (6 months)</p>
+        <p>Ahmedabad, Gujarat, India · Remote</p>
+        <ul>
+          <li>Developed full-stack web solutions for internal operations using React.js and REST APIs.</li>
+          <li>Optimized web app performance, improving load times by 35%.</li>
+          <li>Implemented version control and Agile collaboration.</li>
+          <li>Enhanced UX with real-time progress visualizations.</li>
+        </ul>
+        <p><em>Skills:</em> React.js · JavaScript · HTML/CSS · REST APIs · Agile · Git · UX/UI</p>
+      </article>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>If you'd like to get in touch, please reach out via email or LinkedIn.</p>
+      <ul class="contact-list">
+        <li>Email: <a href="mailto:she.patel@example.com">she.patel@example.com</a></li>
+        <li>LinkedIn: <a href="https://linkedin.com/in/shepatel" target="_blank" rel="noopener">linkedin.com/in/shepatel</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 She Patel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
