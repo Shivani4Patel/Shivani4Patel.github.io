@@ -1,86 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shivani Patel | Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shivani Patel | Cloud Engineer Portfolio</title>
+<link rel="stylesheet" href="styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header>
-    <nav class="container">
+  <header class="header">
+    <nav class="nav container">
       <div class="logo">Shivani Patel</div>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section id="hero" class="container">
-      <h1>Hello, I’m <span class="highlight">Shivani Patel</span></h1>
-      <p class="subtitle">Cloud Engineer & Tech Support Specialist</p>
-      <a href="#contact" class="btn">Get in Touch</a>
+    <section id="hero" class="section hero fade-in">
+      <div class="container">
+        <h1>Hello, I’m <span class="highlight">Shivani Patel</span></h1>
+        <p class="subtitle">Cloud Engineer & Tech Support Specialist</p>
+        <a href="#contact" class="btn">Get in Touch</a>
+      </div>
     </section>
 
-    <section id="about" class="container section">
-      <h2>About Me</h2>
-      <p>
-        Experienced cloud engineer passionate about building scalable solutions and providing exceptional technical support. Skilled in AWS, Google Cloud, cybersecurity, and customer-focused problem solving.
-      </p>
+    <section id="about" class="section about fade-in">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>
+          Experienced cloud engineer with expertise in AWS, Google Cloud, cybersecurity, and technical support. Passionate about creating scalable solutions and delivering excellent customer experiences.
+        </p>
+      </div>
     </section>
 
-    <section id="experience" class="container section">
-      <h2>Experience</h2>
-      <ul>
-        <li><strong>Google Cloud Skills Boost</strong> — Cloud Engineer Track Lead (2025–Present)</li>
-        <li><strong>TD Bank</strong> — Tech Support Advisor (2025–Present)</li>
-        <li><strong>Dell Technologies</strong> — Senior Technical Support Representative (2024–2025)</li>
-      </ul>
+    <section id="experience" class="section experience fade-in">
+      <div class="container">
+        <h2>Experience</h2>
+        <ul>
+          <li><strong>Google Cloud Skills Boost</strong> – Cloud Engineer Track Lead (Jun 2025 - Present)</li>
+          <li><strong>TD Bank</strong> – Tech Support Advisor (Apr 2025 - Present)</li>
+          <li><strong>Dell Technologies</strong> – Senior Technical Support Representative (May 2024 - Apr 2025)</li>
+        </ul>
+      </div>
     </section>
 
-    <section id="contact" class="container section">
-      <h2>Contact Me</h2>
-      <p>Email me: <a href="mailto:pshe47@gmail.com">pshe47@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/shivani-patel" target="_blank" rel="noopener noreferrer">linkedin.com/in/shivani-patel</a></p>
+    <section id="contact" class="section contact fade-in">
+      <div class="container">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:pshe47@gmail.com">pshe47@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/shivani-patel" target="_blank" rel="noopener noreferrer">linkedin.com/in/shivani-patel</a></p>
 
-      <form id="contact-form" onsubmit="return sendEmail()">
-        <input type="text" id="name" placeholder="Your Name" required />
-        <input type="email" id="email" placeholder="Your Email" required />
-        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send</button>
-        <p id="status"></p>
-      </form>
+        <form id="contact-form" onsubmit="return sendEmail(event)">
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+          <input type="email" id="email" name="email" placeholder="Your Email" required />
+          <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn">Send</button>
+          <p id="status" aria-live="polite"></p>
+        </form>
+      </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="container">
       <p>© 2025 Shivani Patel | <a href="https://github.com/yourgithubusername" target="_blank" rel="noopener noreferrer">GitHub</a></p>
     </div>
   </footer>
 
-  <script>
-    function sendEmail() {
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const status = document.getElementById('status');
+<script>
+  // Fade-in on scroll
+  const faders = document.querySelectorAll('.fade-in');
 
-      if (!name || !email || !message) {
-        status.textContent = 'Please fill in all fields.';
-        status.style.color = 'red';
-        return false;
+  const appearOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add('appear');
+        appearOnScroll.unobserve(entry.target);
       }
-      const mailto = `mailto:pshe47@gmail.com?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message + '\n\nFrom: ' + name + ', ' + email)}`;
-      window.location.href = mailto;
-      status.textContent = 'Opening email client...';
-      status.style.color = 'green';
-      return false;
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+
+  // Contact form email trigger
+  function sendEmail(event) {
+    event.preventDefault();
+    const name = event.target.name.value.trim();
+    const email = event.target.email.value.trim();
+    const message = event.target.message.value.trim();
+    const status = document.getElementById('status');
+
+    if (!name || !email || !message) {
+      status.textContent = 'Please fill out all fields.';
+      status.style.color = '#d9534f'; // red
+      return;
     }
-  </script>
+
+    const mailtoLink = `mailto:pshe47@gmail.com?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message + '\n\nFrom: ' + name + ', ' + email)}`;
+    status.textContent = 'Opening your email client...';
+    status.style.color = '#5cb85c'; // green
+
+    setTimeout(() => {
+      window.location.href = mailtoLink;
+    }, 1000);
+  }
+</script>
 </body>
 </html>
