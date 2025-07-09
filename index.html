@@ -5,80 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shivani Patel | Cloud Engineer Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Three.js CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
+  <!-- FontAwesome for tech icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
 </head>
 <body>
-  <header>
-    <h1>Shivani Patel</h1>
-    <p>Passionate Cloud Engineer | AWS & Google Cloud Specialist</p>
-    <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">🌙</button>
-  </header>
+  <!-- 3D Background Canvas -->
+  <canvas id="bg"></canvas>
 
-  <main>
-    <section id="about" class="section">
+  <!-- Overlay content -->
+  <div class="container">
+    <header>
+      <h1 class="glitch" data-text="Shivani Patel">Shivani Patel</h1>
+      <p class="subtitle">Cloud Engineer | AWS & GCP Specialist</p>
+      <button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
+    </header>
+
+    <section id="about" class="section fade-up">
       <h2>About Me</h2>
-      <p>Hello! I'm Shivani Patel, a dedicated Cloud Engineer passionate about designing scalable, secure cloud infrastructure using AWS, GCP, and modern DevOps practices. I love solving complex problems and turning ideas into real-world cloud solutions.</p>
+      <p>
+        Hi, I’m <strong>Shivani Patel</strong>, a passionate cloud engineer
+        specialized in scalable, secure AWS & Google Cloud solutions.
+        I design, build, and optimize modern infrastructure & DevOps pipelines.
+      </p>
     </section>
 
-    <section id="experience" class="section">
+    <section id="experience" class="section fade-up">
       <h2>Experience</h2>
+
       <div class="experience-item">
         <h3>GWG Cloud Engineer Track Lead</h3>
-        <p><em>Google Cloud Skills Boost · Contract Part-time (Jun 2025 - Present)</em></p>
+        <span>Google Cloud Skills Boost · Contract Part-time (Jun 2025 - Present)</span>
         <ul>
-          <li>Facilitate weekly cohort meetings and office hours, supporting learners in cybersecurity.</li>
-          <li>Completed 40+ hands-on labs simulating real-world incident response scenarios.</li>
-          <li>Collaborated with 30+ peers on threat analysis and SIEM tool walkthroughs.</li>
-          <li>Practiced log analysis across 100+ simulated events using SIEM tools.</li>
-          <li>Gained proficiency in network security, digital forensics, and risk mitigation.</li>
+          <li>Led weekly cybersecurity cohort meetings & interactive labs.</li>
+          <li>Completed 40+ hands-on real-world incident response labs.</li>
+          <li>Collaborated on threat detection and log analysis using SIEM tools.</li>
         </ul>
       </div>
 
       <div class="experience-item">
         <h3>Tech Support Advisor</h3>
-        <p><em>TD · Full-time (Apr 2025 - Present)</em></p>
+        <span>TD · Full-time (Apr 2025 - Present)</span>
         <ul>
-          <li>Provided advanced support for internal systems & customer apps in lending platforms.</li>
-          <li>Troubleshot complex technical issues with loan management and banking integrations.</li>
-          <li>Collaborated with IT teams to maintain security protocol compliance.</li>
-          <li>Enhanced system updates and user experience through documentation & feedback.</li>
+          <li>Provided advanced troubleshooting for lending and banking platforms.</li>
+          <li>Collaborated with IT teams ensuring security and system compliance.</li>
+          <li>Documented and optimized user experience for internal apps.</li>
         </ul>
       </div>
 
       <div class="experience-item">
         <h3>Senior Technical Support Representative</h3>
-        <p><em>Dell Technologies · Full-time (May 2024 - Apr 2025)</em></p>
+        <span>Dell Technologies · Full-time (May 2024 - Apr 2025)</span>
         <ul>
-          <li>Resolved critical hardware, software, and cloud product issues with high SLA adherence.</li>
-          <li>Managed escalations and created technical documentation for problem prevention.</li>
-          <li>Reduced average resolution time by 30% supporting global users remotely.</li>
+          <li>Resolved critical enterprise hardware & cloud product issues.</li>
+          <li>Managed escalations and technical documentation to prevent recurrence.</li>
+          <li>Reduced support resolution time by 30% via remote tools & chatbots.</li>
         </ul>
       </div>
-      <!-- Add more experience as needed -->
     </section>
 
-    <section id="projects" class="section">
+    <section id="projects" class="section fade-up">
       <h2>GitHub Projects</h2>
       <div id="repos" class="repos-grid">
-        <!-- Fetched repos appear here -->
         <p>Loading projects...</p>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section fade-up">
       <h2>Contact Me</h2>
       <p>Email: <a href="mailto:pshe47@gmail.com">pshe47@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/shivani-patel-p5371" target="_blank" rel="noopener">shivani-patel-p5371</a></p>
-      <p>Dev.to: <a href="https://dev.to/she0407" target="_blank" rel="noopener">she0407</a></p>
+      <p>
+        LinkedIn:
+        <a
+          href="https://www.linkedin.com/in/shivani-patel-p5371"
+          target="_blank"
+          rel="noopener"
+          >shivani-patel-p5371</a
+        >
+      </p>
+      <p>
+        Dev.to:
+        <a href="https://dev.to/she0407" target="_blank" rel="noopener"
+          >she0407</a
+        >
+      </p>
     </section>
-  </main>
-
-  <!-- 3D rotating cloud container -->
-  <div id="threejs-container"></div>
-
-  <!-- Audio controls -->
-  <div id="audio-controls">
-    <button id="audio-toggle" aria-label="Toggle background audio">🔊</button>
   </div>
 
   <script src="script.js"></script>
