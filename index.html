@@ -1,126 +1,83 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shivani Patel - Cloud & Tech Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+
+  <div class="cloud-background">
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="cloud cloud4"></div>
+  </div>
+
   <div class="container">
 
     <header class="hero">
       <h1 class="hero-title">Shivani Patel</h1>
-      <p class="hero-subtitle">Cloud Engineer & Tech Support Specialist</p>
-      <div class="scroll-down">Scroll Down ↓</div>
+      <p class="hero-subtitle">
+        <span id="typed-text"></span><span class="cursor">|</span>
+      </p>
+      <div class="scroll-down">Scroll ↓</div>
     </header>
 
-<section id="experience" class="section experience fade-in">
-  <div class="container">
-    <h2>Experience</h2>
-    <ul>
-      <li>
-        <strong>GWG Cloud Engineer Track Lead — Google Cloud Skills Boost (Contract Part-time)</strong><br />
-        Jun 2025 – Present<br />
-        • Facilitate weekly cohort meetings and office hours, supporting learners in understanding cybersecurity material.<br />
-        • Organize interactive activities to enhance engagement and reinforce technical concepts.<br />
-        • Maintain communication flow, ensuring team alignment and informing peers of key updates.<br />
-        • Completed 40+ hands-on labs simulating real-world incident response scenarios.<br />
-        • Collaborated with a cohort of 30+ peers in weekly threat analysis sessions and tool walkthroughs.<br />
-        • Practiced log analysis across 100+ simulated events using industry-standard SIEM tools.<br />
-        • Gained proficiency in network security, digital forensics, and risk mitigation strategies.<br />
-        • Trained in real-world applications of threat detection, SIEM configuration, and incident response frameworks.
-      </li>
+    <section id="experience" class="section">
+      <h2>Experience</h2>
+      <div class="cards">
+        <!-- Repeat cards from your experience with same markup as below -->
+        <article class="card" tabindex="0">
+          <h3>GWG Cloud Engineer Track Lead</h3>
+          <p class="company">Google Cloud Skills Boost · Contract Part-time</p>
+          <p class="date">Jun 2025 - Present · 2 mos</p>
+          <ul>
+            <li>Facilitate weekly cohort meetings & office hours on cybersecurity topics.</li>
+            <li>Organize interactive activities to boost engagement & understanding.</li>
+            <li>Completed 40+ hands-on labs on incident response scenarios.</li>
+            <li>Practiced log analysis across 100+ simulated events with SIEM tools.</li>
+            <li>Trained in threat detection, SIEM config, and incident response frameworks.</li>
+          </ul>
+        </article>
 
-      <li>
-        <strong>Tech Support Advisor — TD (Permanent Full-time)</strong><br />
-        Apr 2025 – Present | London, Ontario, Canada (Hybrid)<br />
-        • Provide advanced front-line support for internal systems and customer applications.<br />
-        • Troubleshoot complex technical issues related to lending platforms, loan management, and banking integrations.<br />
-        • Deliver exceptional customer service through clear communication and prompt resolution.<br />
-        • Collaborate with IT and escalation teams to ensure workflow and security compliance.<br />
-        • Assist in documentation and feedback loops to enhance system updates and user experience.
-      </li>
+        <article class="card" tabindex="0">
+          <h3>Tech Support Advisor</h3>
+          <p class="company">TD · Permanent Full-time · London, ON</p>
+          <p class="date">Apr 2025 - Present · 4 mos</p>
+          <ul>
+            <li>Troubleshoot lending platforms and banking integration issues.</li>
+            <li>Deliver exceptional service with clear communication in hybrid settings.</li>
+            <li>Collaborate with IT and escalation teams for smooth workflows.</li>
+            <li>Assist in documentation and system update feedback loops.</li>
+          </ul>
+        </article>
 
-      <li>
-        <strong>Senior Technical Support Representative — Dell Technologies (Permanent Full-time)</strong><br />
-        May 2024 – Apr 2025 (Hybrid)<br />
-        • Resolved critical issues across hardware, software, and cloud products, ensuring high SLAs.<br />
-        • Managed complex escalations, diagnostics, and technical documentation.<br />
-        • Provided input to development and QA teams to prevent issue recurrence.<br />
-        • Supported global users via remote tools and chatbots, reducing average resolution time by 30%.
-      </li>
+        <article class="card" tabindex="0">
+          <h3>Senior Technical Support Representative</h3>
+          <p class="company">Dell Technologies · Permanent Full-time · Hybrid</p>
+          <p class="date">May 2024 - Apr 2025 · 1 yr</p>
+          <ul>
+            <li>Resolved critical hardware, software, and cloud product issues.</li>
+            <li>Managed escalations, diagnostics, and technical documentation.</li>
+            <li>Reduced resolution time by 30% via remote tools & chatbots.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-      <li>
-        <strong>Technical Support Specialist — Canada Revenue Agency (Contract Full-time)</strong><br />
-        May 2023 – Aug 2023 | Ontario, Canada (Hybrid)<br />
-        • Delivered first-level support for login/access issues and application installations.<br />
-        • Guided users through digital tax platforms, ensuring smooth government system interactions.<br />
-        • Documented cases and collaborated with escalation teams for resolution.<br />
-        • Emphasized clarity and compliance in client communications.
-      </li>
-
-      <li>
-        <strong>Over The Counter Associate — Walmart Specialty Pharmacy (Permanent Full-time)</strong><br />
-        Jul 2022 – Jan 2023 | Kitchener, Ontario, Canada (On-site)<br />
-        • Delivered prompt, empathetic customer service in a high-traffic pharmacy environment.<br />
-        • Handled medication-related queries while complying with regulations and privacy.<br />
-        • Assisted with stocking, prescription intake, and data entry.<br />
-        • Collaborated with pharmacists and technicians to maintain inventory accuracy.
-      </li>
-
-      <li>
-        <strong>Cloud Engineer — FABRI (Permanent Full-time)</strong><br />
-        Jul 2021 – Apr 2022 (Remote)<br />
-        • Designed and deployed scalable AWS cloud solutions focusing on automation and IaC.<br />
-        • Built CI/CD pipelines using GitHub Actions and AWS CodePipeline reducing errors by 40%.<br />
-        • Developed containerized microservices with Docker and deployed via AWS ECS.<br />
-        • Implemented centralized logging and monitoring using CloudWatch and ELK Stack.<br />
-        • Collaborated cross-functionally to align cloud solutions with business goals.<br />
-        • Developed RESTful APIs and contributed to React.js front-end applications.
-      </li>
-
-      <li>
-        <strong>Frontend Java Developer — Way To Web (Internship)</strong><br />
-        Feb 2021 – Jul 2021 | Ahmedabad, Gujarat, India (Hybrid)<br />
-        • Built responsive UI components using JavaScript, HTML/CSS, Bootstrap.<br />
-        • Debugged and improved Java-based front-end modules.<br />
-        • Contributed to accessibility and SEO optimization.<br />
-        • Explored Vue.js and AngularJS frameworks to support evolving project needs.
-      </li>
-
-      <li>
-        <strong>Head of Department - Entrepreneurship Cell — Gandhinagar University (Permanent Part-time)</strong><br />
-        Nov 2017 – Apr 2021 | India (Hybrid)<br />
-        • Mentored 50+ students on startup ideation, pitching, and early-stage development.<br />
-        • Hosted workshops, business competitions, and demo days with IIT delegates and experts.<br />
-        • Built partnerships with incubators and accelerators to enhance student exposure.<br />
-        • Developed documentation and playbooks to streamline future programs.
-      </li>
-
-      <li>
-        <strong>Research Assistant — Gandhinagar University</strong><br />
-        Jul 2020 – Feb 2021<br />
-        • Co-developed a smart Parking Allocation System using Java, Spring Boot, and SQL.<br />
-        • Tuned system parameters for 25% performance improvement.<br />
-        • Presented findings to academic panels, contributing to journals.
-      </li>
-
-      <li>
-        <strong>Software Developer — Shiv Infrastructure (Freelance)</strong><br />
-        Jan 2020 – Jun 2020 | Ahmedabad, Gujarat, India (Remote)<br />
-        • Developed full-stack web solutions for internal operations and project management.<br />
-        • Created dynamic dashboards and tools using React.js and REST APIs.<br />
-        • Optimized web app performance improving load times by 35%.<br />
-        • Used Agile workflows and Git for version control and issue tracking.
-      </li>
-    </ul>
-  </div>
-</section>
-
-
-        <!-- Add more cards as needed -->
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">☁️ AWS & GCP Cloud</div>
+        <div class="skill-card">⚙️ DevOps & CI/CD</div>
+        <div class="skill-card">🛠 Infrastructure as Code</div>
+        <div class="skill-card">🔐 Cybersecurity & SIEM</div>
+        <div class="skill-card">💻 Full Stack Development</div>
+        <div class="skill-card">📊 Monitoring & Logging</div>
       </div>
     </section>
 
@@ -131,5 +88,6 @@
     </section>
 
   </div>
+
 </body>
 </html>
