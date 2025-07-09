@@ -1,72 +1,66 @@
-AOS.init();
-
-// GitHub Projects API
-const username = "Shivani4Patel";
-const repoContainer = document.getElementById("repos");
-
-fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
-  .then(res => res.json())
-  .then(repos => {
-    repoContainer.innerHTML = "";
-    repos.slice(0, 6).forEach(repo => {
-      const div = document.createElement("div");
-      div.innerHTML = `<strong><a href="${repo.html_url}" target="_blank">${repo.name}</a></strong> - ${repo.description || 'No description'}`;
-      div.style.marginBottom = '0.5rem';
-      repoContainer.appendChild(div);
-    });
-  })
-  .catch(err => {
-    repoContainer.innerHTML = "Failed to load projects.";
-  });
-
-// Dark/Light toggle
-const toggleBtn = document.getElementById("toggleMode");
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("light-mode");
-});
-
-// Background Audio
-const audio = document.getElementById("bgAudio");
-const audioToggle = document.getElementById("audioToggle");
-audioToggle.addEventListener("click", () => {
-  if (audio.paused) {
-    audio.play();
-    audioToggle.textContent = "🔇";
-  } else {
-    audio.pause();
-    audioToggle.textContent = "🎵";
-  }
-});
-
-// 3D Background Clouds
+// === Background 3D Clouds ===
+const canvas = document.getElementById('bgCanvas');
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ alpha: true });
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById("bgCanvas").appendChild(renderer.domElement);
 
-const geometry = new THREE.SphereGeometry(0.5, 32, 32);
-const material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.3 });
-
+const cloudTexture = new THREE.TextureLoader().load('https://i.ibb.co/2NvmbVN/cloud.png');
+const cloudGeometry = new THREE.PlaneGeometry(5, 5);
 const clouds = [];
-for (let i = 0; i < 50; i++) {
-  const cloud = new THREE.Mesh(geometry, material);
-  cloud.position.set(
-    Math.random() * 20 - 10,
-    Math.random() * 10 - 5,
-    Math.random() * -20
-  );
+
+for (let i = 0; i < 20; i++) {
+  const cloudMaterial = new THREE.MeshBasicMaterial({ map: cloudTexture, transparent: true });
+  const cloud = new THREE.Mesh(cloudGeometry, cloudMaterial);
+  cloud.position.set(Math.random() * 50 - 25, Math.random() * 50 - 25, Math.random() * -50);
   scene.add(cloud);
   clouds.push(cloud);
 }
 
 camera.position.z = 5;
+
 function animate() {
   requestAnimationFrame(animate);
   clouds.forEach(cloud => {
-    cloud.rotation.x += 0.001;
-    cloud.rotation.y += 0.001;
+    cloud.rotation.z += 0.001;
+    cloud.position.x += 0.01;
+    if (cloud.position.x > 25) cloud.position.x = -25;
   });
   renderer.render(scene, camera);
 }
 animate();
+
+// === AOS for animation ===
+AOS.init();
+
+// === Toggle Dark/Light Mode ===
+document.getElementById('toggleMode').addEventListener('click', () => {
+  document.body.classList.toggle('light');
+});
+
+// === Toggle Background Music ===
+const bgAudio = document.getElementById('bgAudio');
+document.getElementById('audioToggle').addEventListener('click', () => {
+  if (bgAudio.paused) {
+    bgAudio.play();
+  } else {
+    bgAudio.pause();
+  }
+});
+
+// === GitHub Repo Loader ===
+async function loadRepos() {
+  const res = await fetch('https://api.github.com/users/Shivani4Patel/repos');
+  const repos = await res.json();
+  const container = document.getElementById('repos');
+  container.innerHTML = '';
+  repos.forEach(repo => {
+    const a = document.createElement('a');
+    a.href = repo.html_url;
+    a.textContent = repo.name;
+    a.target = '_blank';
+    a.style.display = 'block';
+    container.appendChild(a);
+  });
+}
+loadRepos();
