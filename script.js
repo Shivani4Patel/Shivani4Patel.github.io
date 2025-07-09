@@ -1,161 +1,72 @@
-// =============== Dark Mode Toggle ===============
-const themeToggleBtn = document.getElementById('theme-toggle');
-const body = document.body;
+AOS.init();
 
-function setTheme(theme) {
-  if (theme === 'dark') {
-    body.classList.add('dark');
-    themeToggleBtn.textContent = '☀️';
-  } else {
-    body.classList.remove('dark');
-    themeToggleBtn.textContent = '🌙';
-  }
-  localStorage.setItem('theme', theme);
-}
+// GitHub Projects API
+const username = "Shivani4Patel";
+const repoContainer = document.getElementById("repos");
 
-themeToggleBtn.addEventListener('click', () => {
-  if (body.classList.contains('dark')) {
-    setTheme('light');
+fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
+  .then(res => res.json())
+  .then(repos => {
+    repoContainer.innerHTML = "";
+    repos.slice(0, 6).forEach(repo => {
+      const div = document.createElement("div");
+      div.innerHTML = `<strong><a href="${repo.html_url}" target="_blank">${repo.name}</a></strong> - ${repo.description || 'No description'}`;
+      div.style.marginBottom = '0.5rem';
+      repoContainer.appendChild(div);
+    });
+  })
+  .catch(err => {
+    repoContainer.innerHTML = "Failed to load projects.";
+  });
+
+// Dark/Light toggle
+const toggleBtn = document.getElementById("toggleMode");
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+});
+
+// Background Audio
+const audio = document.getElementById("bgAudio");
+const audioToggle = document.getElementById("audioToggle");
+audioToggle.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+    audioToggle.textContent = "🔇";
   } else {
-    setTheme('dark');
+    audio.pause();
+    audioToggle.textContent = "🎵";
   }
 });
 
-// Load saved theme from localStorage
-const savedTheme = localStorage.getItem('theme') || 'light';
-setTheme(savedTheme);
-
-// =============== Scroll Fade-In Animation ===============
-const fadeElements = document.querySelectorAll('.fade-up');
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  },
-  {
-    threshold: 0.3
-  }
-);
-
-fadeElements.forEach(el => observer.observe(el));
-
-// =============== Fetch GitHub Repos ===============
-const reposContainer = document.getElementById('repos');
-const githubUser = 'Shivani4Patel';
-
-async function fetchRepos() {
-  reposContainer.innerHTML = '<p>Loading projects...</p>';
-  try {
-    const res = await fetch(`https://api.github.com/users/${githubUser}/repos?sort=updated&per_page=10`);
-    if(!res.ok) throw new Error('Failed to fetch repos');
-    const repos = await res.json();
-
-    if(repos.length === 0) {
-      reposContainer.innerHTML = '<p>No public repositories found.</p>';
-      return;
-    }
-
-    reposContainer.innerHTML = '';
-    repos.forEach(repo => {
-      const card = document.createElement('div');
-      card.className = 'repo-card';
-      card.innerHTML = `
-        <h3>${repo.name}</h3>
-        <p>${repo.description || 'No description provided.'}</p>
-        <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">View Repo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-      `;
-      reposContainer.appendChild(card);
-    });
-  } catch (err) {
-    reposContainer.innerHTML = `<p class="error">Error loading repos: ${err.message}</p>`;
-  }
-}
-fetchRepos();
-
-// =============== THREE.js 3D Animated Clouds Background ===============
-
-const canvas = document.getElementById('bg');
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x000000, 0); // transparent bg
-
+// 3D Background Clouds
 const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById("bgCanvas").appendChild(renderer.domElement);
 
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
-camera.position.z = 30;
+const geometry = new THREE.SphereGeometry(0.5, 32, 32);
+const material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.3 });
 
-// Ambient lights to highlight clouds
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(ambientLight);
-const pointLight = new THREE.PointLight(0xff6f61, 1);
-pointLight.position.set(10, 20, 10);
-scene.add(pointLight);
-
-// Generate many semi-transparent spheres to simulate volumetric clouds
-
-const cloudGroup = new THREE.Group();
-
-function createCloud() {
-  const cloud = new THREE.Group();
-
-  const sphereMat = new THREE.MeshStandardMaterial({
-    color: 0xff6f61,
-    roughness: 0.8,
-    metalness: 0.1,
-    transparent: true,
-    opacity: 0.25,
-  });
-
-  for(let i = 0; i < 15; i++) {
-    const sphereGeo = new THREE.SphereGeometry(3 + Math.random() * 2, 32, 32);
-    const sphere = new THREE.Mesh(sphereGeo, sphereMat);
-
-    sphere.position.set(
-      Math.random() * 8 - 4,
-      Math.random() * 3 - 1.5,
-      Math.random() * 5 - 2.5,
-    );
-
-    cloud.add(sphere);
-  }
-
+const clouds = [];
+for (let i = 0; i < 50; i++) {
+  const cloud = new THREE.Mesh(geometry, material);
   cloud.position.set(
-    Math.random() * 60 - 30,
     Math.random() * 20 - 10,
-    Math.random() * -10,
+    Math.random() * 10 - 5,
+    Math.random() * -20
   );
-
-  cloud.rotationSpeed = 0.001 + Math.random() * 0.002;
-  return cloud;
+  scene.add(cloud);
+  clouds.push(cloud);
 }
 
-// Create 10 clouds
-for(let i=0; i < 10; i++) {
-  const c = createCloud();
-  cloudGroup.add(c);
-}
-
-scene.add(cloudGroup);
-
-// Animate clouds drifting slowly with rotation
+camera.position.z = 5;
 function animate() {
   requestAnimationFrame(animate);
-  cloudGroup.children.forEach(cloud => {
-    cloud.rotation.y += cloud.rotationSpeed;
-    cloud.position.x += 0.01;
-    if(cloud.position.x > 35) cloud.position.x = -35;
+  clouds.forEach(cloud => {
+    cloud.rotation.x += 0.001;
+    cloud.rotation.y += 0.001;
   });
   renderer.render(scene, camera);
 }
-
 animate();
-
-// Resize handler
-window.addEventListener('resize', () => {
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  camera.aspect = window.innerWidth/window.innerHeight;
-  camera.updateProjectionMatrix();
-});
