@@ -1,43 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Shivani Patel | Cloud Engineer Portfolio</title>
-<link rel="stylesheet" href="styles.css" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shivani Patel - Cloud & Tech Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <header class="header">
-    <nav class="nav container">
-      <div class="logo">Shivani Patel</div>
-      <ul class="nav-links">
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#experience" class="nav-link">Experience</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="container">
 
-  <main>
-    <section id="hero" class="section hero fade-in">
-      <div class="container">
-        <h1>Hello, I’m <span class="highlight">Shivani Patel</span></h1>
-        <p class="subtitle">Cloud Engineer & Tech Support Specialist</p>
-        <a href="#contact" class="btn">Get in Touch</a>
-      </div>
-    </section>
+    <header class="hero">
+      <h1 class="hero-title">Shivani Patel</h1>
+      <p class="hero-subtitle">Cloud Engineer & Tech Support Specialist</p>
+      <div class="scroll-down">Scroll Down ↓</div>
+    </header>
 
-    <section id="about" class="section about fade-in">
-      <div class="container">
-        <h2>About Me</h2>
-        <p>
-          Experienced cloud engineer with expertise in AWS, Google Cloud, cybersecurity, and technical support. Passionate about creating scalable solutions and delivering excellent customer experiences.
-        </p>
-      </div>
-    </section>
-
-    <section id="experience" class="section experience fade-in">
+<section id="experience" class="section experience fade-in">
   <div class="container">
     <h2>Experience</h2>
     <ul>
@@ -140,60 +119,17 @@
   </div>
 </section>
 
-  
 
-  <footer class="footer">
-    <div class="container">
-      <p>© 2025 Shivani Patel | <a href="https://github.com/yourgithubusername" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-    </div>
-  </footer>
+        <!-- Add more cards as needed -->
+      </div>
+    </section>
 
-<script>
-  // Fade-in on scroll
-  const faders = document.querySelectorAll('.fade-in');
+    <section id="contact" class="section contact-section">
+      <h2>Contact Me</h2>
+      <p>Email me at:</p>
+      <a href="mailto:pshe47@gmail.com" class="email-link">pshe47@gmail.com</a>
+    </section>
 
-  const appearOptions = {
-    threshold: 0.15,
-    rootMargin: "0px 0px -50px 0px"
-  };
-
-  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) {
-        return;
-      } else {
-        entry.target.classList.add('appear');
-        appearOnScroll.unobserve(entry.target);
-      }
-    });
-  }, appearOptions);
-
-  faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-  });
-
-  // Contact form email trigger
-  function sendEmail(event) {
-    event.preventDefault();
-    const name = event.target.name.value.trim();
-    const email = event.target.email.value.trim();
-    const message = event.target.message.value.trim();
-    const status = document.getElementById('status');
-
-    if (!name || !email || !message) {
-      status.textContent = 'Please fill out all fields.';
-      status.style.color = '#d9534f'; // red
-      return;
-    }
-
-    const mailtoLink = `mailto:pshe47@gmail.com?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message + '\n\nFrom: ' + name + ', ' + email)}`;
-    status.textContent = 'Opening your email client...';
-    status.style.color = '#5cb85c'; // green
-
-    setTimeout(() => {
-      window.location.href = mailtoLink;
-    }, 1000);
-  }
-</script>
+  </div>
 </body>
 </html>
